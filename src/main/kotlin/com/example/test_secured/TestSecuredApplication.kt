@@ -1,11 +1,11 @@
-package com.example.test_securized
+package com.example.test_secured
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class TestSecurizedApplication
+class TestSecuredApplication
 
 fun main(args: Array<String>) {
-	runApplication<TestSecurizedApplication>(*args)
+	runApplication<TestSecuredApplication>(*args)
 }
