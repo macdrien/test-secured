@@ -17,7 +17,7 @@ class BlogConfiguration {
     @Bean
     fun databaseInitializer(userRepository: UserRepository, authorityRepository: AuthorityRepository, articleRepository: ArticleRepository) = ApplicationRunner {
         val userAuthority = authorityRepository.save(Authority("user"))
-        val user = userRepository.save(User("user", "Mike", "Nike", "{bcrypt}\$2a\$10\$JJxuauoqXm8L/qtQRatWcOIPvG8mp/dETDLTr/EwmOQhAh6x1Fx7S", authorities = listOf(userAuthority)))
+        userRepository.save(User("user", "Mike", "Nike", "{bcrypt}\$2a\$10\$JJxuauoqXm8L/qtQRatWcOIPvG8mp/dETDLTr/EwmOQhAh6x1Fx7S", authorities = listOf(userAuthority)))
         val john = userRepository.save(User("john.doe", "John", "Doe", "{bcrypt}\$2a\$10\$JJxuauoqXm8L/qtQRatWcOIPvG8mp/dETDLTr/EwmOQhAh6x1Fx7S", authorities = listOf(userAuthority)))
         articleRepository.save(Article(
             title = "Lorem title",
