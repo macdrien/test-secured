@@ -30,7 +30,7 @@ class UserService(private val repository: UserRepository,
             ?: throw IllegalStateException("Expected authority not found")
         var user: User = registerUser.toUser(
             id = UUID.randomUUID().toString(),
-            password = passwordEncoder.encode(registerUser.password),
+            encodedPassword = passwordEncoder.encode(registerUser.password),
             authorities = listOf(authority),
         )
         user = repository.save(user)
