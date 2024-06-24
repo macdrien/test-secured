@@ -5,3 +5,10 @@ data class UserDto(
     val givenname: String,
     val familyname: String,
 )
+
+data class RegisterUser(
+    val username: String,
+    val givenname: String,
+    val familyname: String,
+    val password: String,
+)

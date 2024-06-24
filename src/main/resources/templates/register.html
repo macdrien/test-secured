@@ -1,0 +1,12 @@
+{{> header}}
+
+<form method="POST" action="/users/register">
+    <input type="text" name="username" placeholder="Username" />
+    <input type="text" name="givenname" placeholder="Givenname" />
+    <input type="text" name="familyname" placeholder="Familyname" />
+    <input type="text" name="password" placeholder="Password" />
+    {{#_csrf}}<input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}" />{{/_csrf}}
+    <button type="submit">S'inscrire</button>
+</form>
+
+{{> footer}}

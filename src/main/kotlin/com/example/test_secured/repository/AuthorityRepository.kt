@@ -5,4 +5,6 @@ import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface AuthorityRepository: CrudRepository<Authority, String>
+interface AuthorityRepository: CrudRepository<Authority, String> {
+    fun findByName(name: String): Authority?
+}

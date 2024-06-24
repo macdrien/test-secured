@@ -19,9 +19,7 @@ class SecurityConfiguration {
                 authorize("/articles/create", authenticated)
                 authorize(anyRequest, permitAll)
             }
-            formLogin {
-
-            }
+            formLogin { defaultSuccessUrl("/", true) }
             httpBasic { }
             headers { frameOptions { disable() } }
             csrf { ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")) }
