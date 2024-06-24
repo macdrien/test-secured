@@ -17,23 +17,26 @@ class UserService(private val repository: UserRepository,
                   private val authorityRepository: AuthorityRepository,
                   private val passwordEncoder: PasswordEncoder): UserDetailsService {
 
-    override fun loadUserByUsername(username: String?): UserDetails {
+    fun findUserByUsername(username: String?): User {
         if (username == null) {
-            throw UsernameNotFoundException("Null username")
+            throw UsernameNotFoundException("Username can't be null")
         }
-
         return repository.findByUsername(username) ?: throw UsernameNotFoundException("User not found")
     }
+
+    override fun loadUserByUsername(username: String?): UserDetails = findUserByUsername(username)
 
     fun registerUser(registerUser: RegisterUser): User {
         val authority = authorityRepository.findByName("user")
             ?: throw IllegalStateException("Expected authority not found")
+
         var user: User = registerUser.toUser(
             id = UUID.randomUUID().toString(),
             encodedPassword = passwordEncoder.encode(registerUser.password),
             authorities = listOf(authority),
         )
         user = repository.save(user)
+
         return user
     }
 }
